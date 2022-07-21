@@ -2,8 +2,6 @@
 
 const manager = (arrayData) => {
     return `
-    <section class="center" id="employees">
-    <div class="row">
         <div class="col s4">
             <div class="card blue-grey darken-1">
                 <div class="card-content white-text">
@@ -17,15 +15,12 @@ const manager = (arrayData) => {
                 </div>
             </div>
         </div>
-    </div>
-</section>
 `
 }
 
 const engineer = (arrayData) => {
     return `
-    <section class="center" id="employees">
-    <div class="row">
+
         <div class="col s4">
             <div class="card blue-grey darken-1">
                 <div class="card-content white-text">
@@ -39,15 +34,11 @@ const engineer = (arrayData) => {
                 </div>
             </div>
         </div>
-    </div>
-</section>
 `
 }
 
 const intern = (arrayData) => {
     return `
-    <section class="center" id="employees">
-    <div class="row">
         <div class="col s4">
             <div class="card blue-grey darken-1">
                 <div class="card-content white-text">
@@ -61,8 +52,7 @@ const intern = (arrayData) => {
                 </div>
             </div>
         </div>
-    </div>
-</section>
+
 `
 }
 
@@ -75,7 +65,7 @@ const employeeContainer = teamArray => {
         if(teamArray[i].getRole() === 'Manager'){
             teamHtml += manager(teamArray[i])
         }
-        if(teamArray[i].getRole() === 'Engigeer') {
+        if(teamArray[i].getRole() === 'Engineer') {
             teamHtml += engineer(teamArray[i])
         }
         if(teamArray[i].getRole() === 'Intern') {
@@ -98,7 +88,9 @@ const template = teamData => {
     <body>
         <h1 class="center">♡ my team ♡</h1>
         <section class="center" id="employees">
+        <div class="row">
         ${employeeContainer(teamData)}
+        </div>
         </section>
     </body>
     </html>
