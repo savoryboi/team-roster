@@ -1,6 +1,7 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 
+
 // create arrays of questions for each type of team member
 const managerPrompt = [
     {
@@ -89,6 +90,9 @@ class Manager {
         this.email = email;
         this.office = office;
     }
+    createManager() {
+
+    }
     
 }
 
@@ -100,6 +104,9 @@ class Engineer {
         this.email = email;
         this.github = github;
     }
+    createEng() {
+
+    }
 }
 //intern class
 class Intern {
@@ -109,17 +116,44 @@ class Intern {
         this.email = email;
         this.school = school;
     }
+    createInt() {
+
+    }
 }
 
-
-// function writeToHTML(answers) {
-//     const { name, id, email, office } = managerPrompt;
-//     const { eng_name, eng_id, eng_email, github} = engPrompt;
-//     const { int_name, int_id, int_email, school} = internPrompt;
-// }
-
-function greeting() {
-    inquirer.prompt('Hello, and welcome to the team roster builder!')
+function mainMenu() {
+    inquirer.prompt(menu)
+    .then(answer => {
+        if(answer.next === 'add an engineer') {
+            newEngineer();
+        }
+        else if(answer.next === 'add an intern') {
+            newIntern();
+        } else {
+            return;
+        }
+    })
 }
 
-init();
+function newEngineer() {
+    inquirer.prompt(engPrompt)
+        .then(({name, id, email, github}) => {
+            var newEngineer = new Engineer(name, id, email, github)
+        })
+        .then(mainMenu)
+}
+
+function newIntern() {
+    inquirer.prompt(internPrompt)
+        .then(({name, id, email, school}) => {
+            var newIntern = new Intern(name, id, email, school)
+        })
+        .then(mainMenu)
+}
+
+inquirer.prompt(managerPrompt)
+    .then(({name, id, email, office}) => {
+        var newManager = new Manager(name, id, email, office)
+        console.log(newManager);
+    })
+    .then(mainMenu)
