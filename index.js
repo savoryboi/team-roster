@@ -6,11 +6,14 @@ const { Manager, managerPrompts} = require('./lib/Manager');
 const { Engineer, engPrompts } = require('./lib/Engineer');
 const { Intern, internPrompts } = require('./lib/Intern');
 
+// create empty array to push team members to
 const teamArray = [];
 
-
+// declare start function so that it begins with the manager
 const start = () => { managerQs() };
 
+// prompts questions from manager.js and creates a new Manager using constructing function and pushes that new object to the teamArray
+// then sends user to choose a new employee type to add
 const managerQs = () => {
     inquirer.prompt(managerPrompts)
     .then(answers => {
@@ -20,7 +23,8 @@ const managerQs = () => {
     })
 }
 
-
+// engineer questions prompted, creates a new engineer object and pushes that to the team array
+// brings user back to menu to either add employee or finish building their team 
 const engineerQs = () => {
     inquirer.prompt(engPrompts)
     .then(answers => {
@@ -30,6 +34,7 @@ const engineerQs = () => {
     })
 }
 
+// same this as previous manager and engineer functions above
 const internQs = () => {
     inquirer.prompt(internPrompts)
     .then(answers => {
@@ -39,6 +44,7 @@ const internQs = () => {
     })
 }
 
+// creates a menu of sorts to allow the user to select a new type of employee to add or finish building their team 
 const newEmployee = () => {
     inquirer.prompt([{
         type: 'list', 
@@ -50,12 +56,15 @@ const newEmployee = () => {
             {name: 'complete', value: 'complete'}
         ]
     }])
+    // depending on the answer to the prompt named teamMember, launches corresponding function to prompt user for employee info 
     .then( answer => {
         if (answer.teamMember === 'newEngineer') {
             engineerQs()
         } else if (answer.teamMember === 'newIntern') {
             internQs()
-        }
+        } else if (answer.teamMember === 'complete') [
+            // write HTML file
+        ]
 
     })
 }
