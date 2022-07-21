@@ -1,5 +1,5 @@
 const inquirer = require('inquirer');
-const fs = require('fs');
+const template = requrie('./src/html-template')
 
 // import classes from lib folder
 const { Manager, managerPrompts} = require('./lib/Manager');
