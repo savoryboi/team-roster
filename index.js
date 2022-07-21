@@ -26,29 +26,27 @@ const managerPrompt = [
     }
 ];
 
-const menu = [
-    {
+const menu = {
         type: 'list', 
         name: 'next', 
         message: 'what would you like to do next?',
         choices: ['add an engineer', 'add an intern', 'finish building my team']
-    }
-];
+    };
 
 const engPrompt = [
     {
         type: 'input',
-        name: 'name',
+        name: 'eng_name',
         message: 'enter engineer\'s name:'
     },
     {
         type: 'input',
-        name: 'id',
+        name: 'eng_id',
         message: 'engineer\'s id:'
     },
     {
         type: 'input',
-        name: 'email',
+        name: 'eng_email',
         message: 'email address:'
     },
     {
@@ -61,17 +59,17 @@ const engPrompt = [
 const internPrompt = [
     {
         type: 'input',
-        name: 'name',
+        name: 'int_name',
         message: 'enter intern\'s name:'
     },
     {
         type: 'input',
-        name: 'id',
+        name: 'int_id',
         message: 'intern\'s id:'
     },
     {
         type: 'input',
-        name: 'email',
+        name: 'int_email',
         message: 'email address:'
     },
     {
@@ -81,79 +79,123 @@ const internPrompt = [
     } 
 ];
 
-
-//manager class
-class Manager {
-    constructor(name, id, email, office){
+class Employee {
+    constructor(name, id, email) {
         this.name = name;
         this.id = id;
         this.email = email;
-        this.office = office;
     }
-    createManager() {
+    getName() {
+        
+    }
+    getId() {
 
     }
-    
+    getEmail() {
+
+    }
+    getRole() {
+
+        return Employee;
+    }
+}
+
+//manager class
+class Manager extends Employee {
+    constructor(name, id, email, officeNumber){
+        super(name, id, email);
+        // this.name = name;
+        // this.id = id;
+        // this.email = email;
+        this.officeNumber = officeNumber;
+    }
+    getRole() {
+
+        return Manager;
+    }
 }
 
 //engineer class 
-class Engineer {
+class Engineer extends Employee {
+   
     constructor(name, id, email, github) {
-        this.name = name;
-        this.id = id;
-        this.email = email;
+        super(name, id, email);
+        // this.name = name;
+        // this.id = id;
+        // this.email = email;
         this.github = github;
     }
-    createEng() {
+    getGitHub() {
 
+    }
+    getRole() {
+
+        return Engineer;
     }
 }
 //intern class
-class Intern {
+
+class Intern extends Employee {
+
     constructor(name, id, email, school) {
-        this.name = name;
-        this.id = id;
-        this.email = email;
+        super(name, id, email);
+        // this.name = name;
+        // this.id = id;
+        // this.email = email;
         this.school = school;
     }
-    createInt() {
+    getSchool() {
 
+    }
+    getRole(){
+        
+        return Intern;
     }
 }
 
-function mainMenu() {
-    inquirer.prompt(menu)
-    .then(answer => {
-        if(answer.next === 'add an engineer') {
-            newEngineer();
-        }
-        else if(answer.next === 'add an intern') {
-            newIntern();
-        } else {
-            return;
-        }
-    })
-}
 
-function newEngineer() {
-    inquirer.prompt(engPrompt)
-        .then(({name, id, email, github}) => {
-            var newEngineer = new Engineer(name, id, email, github)
-        })
-        .then(mainMenu)
-}
 
-function newIntern() {
-    inquirer.prompt(internPrompt)
-        .then(({name, id, email, school}) => {
-            var newIntern = new Intern(name, id, email, school)
-        })
-        .then(mainMenu)
-}
 
-inquirer.prompt(managerPrompt)
-    .then(({name, id, email, office}) => {
-        var newManager = new Manager(name, id, email, office)
-        console.log(newManager);
-    })
-    .then(mainMenu)
+
+
+
+// function mainMenu() {
+//     inquirer.prompt(menu)
+//     .then(answer => {
+//         if(answer.next === 'add an engineer') {
+//             newEngineer();
+//         }
+//         else if(answer.next === 'add an intern') {
+//             newIntern();
+//         } else {
+//             console.log('your team is complete! :)')
+//             writetoHTML();
+//         }
+//     })
+// }
+
+// function newEngineer() {
+//     inquirer.prompt(engPrompt)
+//         .then(({name, id, email, github}) => {
+//             var newEngineer = new Engineer(name, id, email, github)
+//             console.log(newEngineer)
+//         })
+//         .then(mainMenu)
+// }
+
+// function newIntern() {
+//     inquirer.prompt(internPrompt)
+//         .then(({name, id, email, school}) => {
+//             var newIntern = new Intern(name, id, email, school)
+//             console.log(newIntern)
+//         })
+//         .then(mainMenu)
+// }
+
+// function writetoHTML() {
+
+// }
+
+// inquirer.prompt(managerPrompt)
+//     .then()
+//     .then(mainMenu)
