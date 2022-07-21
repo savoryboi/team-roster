@@ -17,7 +17,7 @@ const start = () => { managerQs() };
 const managerQs = () => {
     inquirer.prompt(managerPrompts)
     .then(answers => {
-        let manager = new Manager(answers.name, answers.id, answers.email, answers.officeNumber)
+        let manager = new Manager(answers.name, answers.id, answers.email, answers.office)
         teamArray.push(manager);
         return newEmployee();
     })
@@ -64,6 +64,7 @@ const newEmployee = () => {
             internQs()
         } else if (answer.teamMember === 'complete') [
             // write HTML file
+            console.log(teamArray)
         ]
 
     })
