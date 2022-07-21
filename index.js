@@ -12,41 +12,6 @@ const menu = {
 
 
 
-//manager class
-
-
-//engineer class 
-
-//intern class
-
-class Intern extends Employee {
-
-    constructor(name, id, email, school) {
-        super(name, id, email);
-        // this.name = name;
-        // this.id = id;
-        // this.email = email;
-        this.school = school;
-    }
-    getSchool() {
-        inquirer.prompt({
-            name: school,
-            message: 'the intern\'s school:' 
-        })
-        .then(answer => {
-
-        })
-    }
-    getRole(){
-        
-        return 'Intern';
-    }
-}
-
-
-
-
-
 // function mainMenu() {
 //     inquirer.prompt(menu)
 //     .then(answer => {
