@@ -1,5 +1,6 @@
 const inquirer = require('inquirer');
-const template = requrie('./src/html-template')
+const template = require('./src/html-template');
+const fs = require('fs');
 
 // import classes from lib folder
 const { Manager, managerPrompts} = require('./lib/Manager');
@@ -62,10 +63,18 @@ const newEmployee = () => {
             engineerQs()
         } else if (answer.teamMember === 'newIntern') {
             internQs()
-        } else if (answer.teamMember === 'complete') [
+        } else if (answer.teamMember === 'complete') {
             // write HTML file
-            console.log(teamArray)
-        ]
+            let html = template(teamArray)
+
+            fs.writeFile("index.html", html, (err) => {
+                if(err) console.log(err);
+                else {
+                    console.log('file written with flying colors')
+                }
+            })
+
+        }
 
     })
 }
