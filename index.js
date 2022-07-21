@@ -1,80 +1,44 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 
-const managerPrompt = [
-    {
-        type: 'input',
-        name: 'name',
-        message: 'enter team manager\'s name:'
-    },
-    {
-        type: 'input',
-        name: 'id',
-        message: 'employee id:'
-    },
-    {
-        type: 'input',
-        name: 'email',
-        message: 'email address:'
-    },
-    {
-        type: 'input',
-        name: 'office',
-        message: 'office number:'
+//manager class
+class Manager {
+    constructor(name, id, email, office){
+        this.name = name;
+        this.id = id;
+        this.email = email;
+        this.office = office;
     }
-];
+    
+}
 
-const menu = [
-    {
-        type: 'list', 
-        name: 'next', 
-        message: 'what would you like to do next?',
-        choices: ['add an engineer', 'add an intern', 'finish building my team']
+//engineer class 
+class Engineer {
+    constructor(name, id, email, github) {
+        this.name = name;
+        this.id = id;
+        this.email = email;
+        this.github = github;
     }
-];
-
-const engPrompt = [
-    {
-        type: 'input',
-        name: 'name',
-        message: 'enter engineer\'s name:'
-    },
-    {
-        type: 'input',
-        name: 'id',
-        message: 'engineer\'s id:'
-    },
-    {
-        type: 'input',
-        name: 'email',
-        message: 'email address:'
-    },
-    {
-        type: 'input',
-        name: 'github',
-        message: 'github username:'
+}
+//intern class
+class Intern {
+    constructor(name, id, email, school) {
+        this.name = name;
+        this.id = id;
+        this.email = email;
+        this.school = school;
     }
-];
+}
 
-const internPrompt = [
-    {
-        type: 'input',
-        name: 'name',
-        message: 'enter intern\'s name:'
-    },
-    {
-        type: 'input',
-        name: 'id',
-        message: 'intern\'s id:'
-    },
-    {
-        type: 'input',
-        name: 'email',
-        message: 'email address:'
-    },
-    {
-        type: 'input',
-        name: 'school',
-        message: 'school:'
-    } 
-];
+function writeToHTML(answers) {
+    const { name, id, email, office } = managerPrompt;
+    const { eng_name, eng_id, eng_email, github} = engPrompt;
+    const { int_name, int_id, int_email, school} = internPrompt;
+}
+
+function init() {
+
+}
+
+init();
