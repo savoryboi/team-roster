@@ -13,5 +13,7 @@ This is a slick app for quickly entering your team of employee's information and
 
 Then, in your terminal use the command 'node index.js' to launch the application. :)
 
+Once you have completed building your team, you can open the index.html file in your default browser to view the end result!
+
 ## Demo
 [Watch Demo](https://drive.google.com/file/d/1dy1PZKfP_LOFJEIpeE6sw11R56TZIs2J/view)
